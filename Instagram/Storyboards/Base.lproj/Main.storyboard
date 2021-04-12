@@ -47,11 +47,11 @@
             </objects>
             <point key="canvasLocation" x="1812" y="374"/>
         </scene>
-        <!--I-->
+        <!--Navigation Controller-->
         <scene sceneID="7Cf-B5-ntn">
             <objects>
                 <navigationController id="PAm-20-Szh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="I" image="house" catalog="system" id="EJv-M1-29R"/>
+                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" id="EJv-M1-29R"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HXB-pZ-tA1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
