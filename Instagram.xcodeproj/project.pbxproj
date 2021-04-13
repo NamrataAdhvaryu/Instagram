@@ -32,6 +32,7 @@
 		848FB0EF2624F5B500E81F2A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FB0EE2624F5B500E81F2A /* DatabaseManager.swift */; };
 		848FB0F22624F77D00E81F2A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FB0F12624F77D00E81F2A /* AuthManager.swift */; };
 		848FB0F52624F78F00E81F2A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FB0F42624F78F00E81F2A /* StorageManager.swift */; };
+		848FB10D262504E100E81F2A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FB10C262504E100E81F2A /* Extensions.swift */; };
 		DB960E16AB714DB070F15AA1 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1CDBF4B3D02E020C14600E /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		848FB0EE2624F5B500E81F2A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		848FB0F12624F77D00E81F2A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		848FB0F42624F78F00E81F2A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		848FB10C262504E100E81F2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				848FB0EE2624F5B500E81F2A /* DatabaseManager.swift */,
 				848FB0F12624F77D00E81F2A /* AuthManager.swift */,
 				848FB0F42624F78F00E81F2A /* StorageManager.swift */,
+				848FB10C262504E100E81F2A /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				848FB09D2624C32F00E81F2A /* RegistrationViewController.swift in Sources */,
 				848FB0882624C22100E81F2A /* ExploreViewController.swift in Sources */,
 				848FB0F52624F78F00E81F2A /* StorageManager.swift in Sources */,
+				848FB10D262504E100E81F2A /* Extensions.swift in Sources */,
 				848FB0A92624C3D700E81F2A /* ListViewController.swift in Sources */,
 				848FB0F22624F77D00E81F2A /* AuthManager.swift in Sources */,
 				848FB0B52624C4AD00E81F2A /* PublicPostViewController.swift in Sources */,
