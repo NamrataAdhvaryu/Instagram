@@ -8,22 +8,36 @@
 import UIKit
 
 class ExploreViewController: UIViewController {
-
+    private let searchbar: UISearchBar = {
+     let searchbar = UISearchBar()
+        searchbar.backgroundColor = .secondarySystemBackground
+        return searchbar
+    }()
+    private var collectionview:UICollectionView?
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.topItem?.titleView = searchbar
+        
+        collectionview?.delegate = self
+        collectionview?.dataSource = self
+        let layout = UICollectionViewFlowLayout()
+        collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+}
+extension ExploreViewController:UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+    
 }

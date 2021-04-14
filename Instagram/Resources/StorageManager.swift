@@ -11,5 +11,29 @@ public class StorageManager
 {
     
 static let shared = StorageManager()
-   
+    private let bucket = Storage.storage().reference()
+   public enum IGStorageManagererror:Error {
+        case failedtodownload
+    }
+    
+    func  uploaduserphotopost(model:userPost, completion:(Result<URL,Error>) -> Void)  {
+    
+    }
+    func downloadimage(with reference:String,completion:@escaping(Result<URL,IGStorageManagererror>) -> Void) {
+        bucket.child(reference).downloadURL { (url, error) in
+            guard let url = url , error == nil else {
+                completion(.failure(.failedtodownload))
+                return
+            }
+            completion(.success(url))
+        }
+        
+    }
+    public enum Userposttype {
+      case photo,video
+    }
+    public struct userPost {
+        let postType : Userposttype
+        
+    }
 }
