@@ -29,11 +29,5 @@ static let shared = StorageManager()
         }
         
     }
-    public enum Userposttype {
-      case photo,video
-    }
-    public struct userPost {
-        let postType : Userposttype
-        
-    }
+   
 }

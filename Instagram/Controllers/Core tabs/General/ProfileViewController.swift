@@ -8,54 +8,146 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    private var collectionview :UICollectionView?
+    var Userpost = [userPost]()
+    private let collectionView: UICollectionView = {
+        let viewLayout = UICollectionViewFlowLayout()
+        viewLayout.scrollDirection = .vertical
+        viewLayout.minimumLineSpacing = 1
+        viewLayout.minimumInteritemSpacing = 1
+        viewLayout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
+        let size = 370 / 3
+        viewLayout.itemSize = CGSize(width: size, height: size)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+      
+        return collectionView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionview?.delegate = self
-        collectionview?.dataSource = self
+        
+        
+        
+        let size = (view.width - 4) / 3
+        view.backgroundColor = .systemBackground
         configurenavigationbar()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+ collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: view.width/3, height: view.width/3)
-        collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.itemSize = CGSize(width: size, height: size)
+
+    
+        //headers
         
-        guard let collectionview = collectionview else {
-            return
-        }
+        collectionView.register(ProfileinfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileinfoHeaderCollectionReusableView.identifier)
+        collectionView.register(ProfiletabCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfiletabCollectionReusableView.identifier)
         
-        
-        view.addSubview(collectionview)
+        view.addSubview(collectionView)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionview?.frame = view.bounds
+        collectionView.frame = view.bounds
     }
-  private  func configurenavigationbar()  {
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),style: .done, target: self, action: #selector(didtapsettingsButton))
+    private  func configurenavigationbar()  {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"),style: .done, target: self, action: #selector(didtapsettingsButton))
     }
-  @objc func didtapsettingsButton()
-   {
-    let vc = SettingsViewController()
-    vc.title = ""
-    navigationController?.pushViewController(vc, animated: true)
-   }
-    
+    @objc func didtapsettingsButton()
+    {
+        let vc = SettingsViewController()
+        vc.title = ""
+        navigationController?.pushViewController(vc, animated: true)
     }
-    
-extension ProfileViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
-{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    return UICollectionViewCell()
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionview?.deselectItem(at: indexPath, animated: true)
-    }
-    
 }
 
+
+
+
+extension ProfileViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
+{
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return 0
+        }
+        //Userpost.count
+        return 30
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
+//        let model = Userpost[indexPath.row]
+//        cell.configure(with: model)
+        cell.configure(debug: "nam5")
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var model = Userpost[indexPath.row]
+        let vc = PostViewController(model: nil)
+        vc.title = "Post"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard kind == UICollectionView.elementKindSectionHeader  else {
+            //footer
+            return UICollectionReusableView()
+        }
+        
+        if indexPath.section == 1 {
+            let tabcontrolheader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfiletabCollectionReusableView.identifier, for: indexPath) as! ProfiletabCollectionReusableView
+        return tabcontrolheader
+        }
+        let profileheader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileinfoHeaderCollectionReusableView.identifier, for: indexPath) as! ProfileinfoHeaderCollectionReusableView
+        profileheader.delegate = self
+        return profileheader
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: collectionView.width, height: collectionView.height/3)
+        }
+        return CGSize(width: collectionView.width, height: 65)
+    }
+
+}
+// MARK :- ProfileinfoHeaderCollectionReusableViewdelegate
+extension ProfileViewController: ProfileinfoHeaderCollectionReusableViewdelegate {
+    func profileheaderDidTapPostsButton(_ Header: ProfileinfoHeaderCollectionReusableView) {
+        // scroll to the post
+        collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: true)
+    }
+    
+    func profileheaderDidTapfollwingButton(_ Header: ProfileinfoHeaderCollectionReusableView) {
+        let vc = ListViewController()
+        vc.title = "Following"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func profileheaderDidTapfollowersButton(_ Header: ProfileinfoHeaderCollectionReusableView) {
+        let vc = ListViewController()
+        vc.title = "followers"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func profileheaderDidTapeditprofileButton(_ Header: ProfileinfoHeaderCollectionReusableView) {
+      let vc = EditprofileViewController()
+        vc.title = "Edit Profile"
+        present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
+    }
+    
+
+}
