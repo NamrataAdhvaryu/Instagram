@@ -47,6 +47,7 @@ class ProfileViewController: UIViewController {
         collectionView.register(ProfileinfoHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileinfoHeaderCollectionReusableView.identifier)
         collectionView.register(ProfiletabCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfiletabCollectionReusableView.identifier)
         
+        
         view.addSubview(collectionView)
     }
     
@@ -108,6 +109,7 @@ extension ProfileViewController: UICollectionViewDelegate,UICollectionViewDataSo
         
         if indexPath.section == 1 {
             let tabcontrolheader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfiletabCollectionReusableView.identifier, for: indexPath) as! ProfiletabCollectionReusableView
+            tabcontrolheader.delegate = self
         return tabcontrolheader
         }
         let profileheader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileinfoHeaderCollectionReusableView.identifier, for: indexPath) as! ProfileinfoHeaderCollectionReusableView
@@ -118,7 +120,7 @@ extension ProfileViewController: UICollectionViewDelegate,UICollectionViewDataSo
         if section == 0 {
             return CGSize(width: collectionView.width, height: collectionView.height/3)
         }
-        return CGSize(width: collectionView.width, height: 65)
+        return CGSize(width: collectionView.width, height: 50)
     }
 
 }
@@ -130,14 +132,23 @@ extension ProfileViewController: ProfileinfoHeaderCollectionReusableViewdelegate
     }
     
     func profileheaderDidTapfollwingButton(_ Header: ProfileinfoHeaderCollectionReusableView) {
-        let vc = ListViewController()
+        
+        var mockdata = [UserRelationship]()
+        for x in 0..<10 {
+            mockdata.append(UserRelationship(username: "namrata", name: "namrata joshi", type: x % 2 == 0 ? .following:.not_following))
+        }
+        let vc = ListViewController(data: mockdata)
         vc.title = "Following"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func profileheaderDidTapfollowersButton(_ Header: ProfileinfoHeaderCollectionReusableView) {
-        let vc = ListViewController()
+        var mockdata = [UserRelationship]()
+        for x in 0..<10 {
+            mockdata.append(UserRelationship(username: "namrata", name: "namrata joshi", type: x % 2 == 0 ? .following:.not_following))
+        }
+        let vc = ListViewController(data: mockdata)
         vc.title = "followers"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
@@ -150,4 +161,16 @@ extension ProfileViewController: ProfileinfoHeaderCollectionReusableViewdelegate
     }
     
 
+}
+//
+extension ProfileViewController: ProfiletabCollectionReusableViewdelegate {
+    func didtapgriddedbuttonTab() {
+        
+    }
+    
+    func didtaptaggedbuttonTab() {
+        
+    }
+    
+    
 }

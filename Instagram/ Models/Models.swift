@@ -12,6 +12,7 @@ enum Gender {
 struct User {
     let username:String
     let bio:String
+    let profilpicture:URL
     let name: (first:String, last:String)
     let birthdate:Date
     let gender:Gender
@@ -23,8 +24,9 @@ struct Usercount {
     let follwers:Int
     let posts:Int
 }
-public enum Userposttype {
-  case photo,video
+public enum Userposttype:String {
+    case photo = "photo"
+    case video = "video"
 }
 
 
