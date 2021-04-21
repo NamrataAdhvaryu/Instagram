@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
         viewLayout.minimumLineSpacing = 1
         viewLayout.minimumInteritemSpacing = 1
         viewLayout.sectionInset = UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 1)
-        let size = 370 / 3
+        let size = 136
         viewLayout.itemSize = CGSize(width: size, height: size)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
       
@@ -26,20 +26,13 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
-        let size = (view.width - 4) / 3
         view.backgroundColor = .systemBackground
         configurenavigationbar()
         collectionView.delegate = self
         collectionView.dataSource = self
  collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 1
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: size, height: size)
+        
 
     
         //headers
@@ -94,8 +87,10 @@ extension ProfileViewController: UICollectionViewDelegate,UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         var model = Userpost[indexPath.row]
-        let vc = PostViewController(model: nil)
-        vc.title = "Post"
+        let user = User(username: "namrata", bio: "", profilpicture: URL(string: "http://www.google.com")!, name: (first: "", last: ""), birthdate: Date(), gender: .female, counts: Usercount(following: 1, follwers: 1, posts: 1), joinDate: Date())
+        let post = userPost(identifier: "", postType: .photo, thumbnailimage: URL(string: "http://www.google.com")!, postURL: URL(string: "http://www.google.com")!, caption: "", likecount: [], commnents: [], createddate: Date(), taggedUsers: [],owner:user)
+        let vc = PostViewController(model: post)
+        vc.title = post.postType.rawValue
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
