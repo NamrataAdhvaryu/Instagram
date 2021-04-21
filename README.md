@@ -44,4 +44,15 @@ Here is Design and building of the same as Instagram App with great features of 
 ![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 17 03 37](https://user-images.githubusercontent.com/70209068/115621701-e5586f80-a2c4-11eb-9427-b72247eb6796.png)
 ![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 43 44](https://user-images.githubusercontent.com/70209068/115621709-e7223300-a2c4-11eb-80cd-6037f4e12f56.png)
 
+# LIGHT MODE
+
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 14 42 13](https://user-images.githubusercontent.com/70209068/115622272-9fe87200-a2c5-11eb-8bda-37e1b1eb7586.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 15 19](https://user-images.githubusercontent.com/70209068/115622464-e047f000-a2c5-11eb-9157-95228b420776.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 15 36](https://user-images.githubusercontent.com/70209068/115622469-e4740d80-a2c5-11eb-8ca7-25e2064bdca8.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 16 11](https://user-images.githubusercontent.com/70209068/115622476-e76efe00-a2c5-11eb-91c0-2fafebc80c7d.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 17 23](https://user-images.githubusercontent.com/70209068/115622482-e8a02b00-a2c5-11eb-8aec-18da1611e7f7.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 51 49](https://user-images.githubusercontent.com/70209068/115622487-ea69ee80-a2c5-11eb-8dfb-ad4f0db94111.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 16 43 39](https://user-images.githubusercontent.com/70209068/115622522-f8b80a80-a2c5-11eb-947e-cffb71267369.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 17 03 15](https://user-images.githubusercontent.com/70209068/115622539-ff468200-a2c5-11eb-9d1c-99111620013b.png)
+![Simulator Screen Shot - iPhone 12 mini - 2021-04-21 at 14 43 27](https://user-images.githubusercontent.com/70209068/115622437-d7efb500-a2c5-11eb-87ef-330cc2d696e1.png)
 
